@@ -6,6 +6,9 @@ _IGNORE_*/
 *.data.json
 baileys_auth_info/
 
+# Database file
+db.json
+
 # Logs
 *.log
 *.txt
@@ -23,3 +26,5 @@ baileys_auth_info/
 # Build/output
 dist/
 build/
+
+package-lock.json
