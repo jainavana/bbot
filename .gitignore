@@ -1,0 +1,25 @@
+# Node.js dependencies
+node_modules/
+
+# Session/auth/temp data
+_IGNORE_*/
+*.data.json
+baileys_auth_info/
+
+# Logs
+*.log
+*.txt
+
+# OS & Editor files
+.DS_Store
+.vscode/
+.idea/
+
+# Env and credentials
+.env
+.env.local
+.env.*.local
+
+# Build/output
+dist/
+build/
