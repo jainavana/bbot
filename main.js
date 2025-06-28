@@ -166,7 +166,17 @@ create({
   headless: true,
   qrTimeout: 60,
   authTimeout: 60,
-  cacheEnabled: false
+  cacheEnabled: false,
+  chromiumArgs: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-dev-shm-usage',
+    '--disable-accelerated-2d-canvas',
+    '--no-first-run',
+    '--no-zygote',
+    '--single-process',
+    '--disable-gpu'
+  ]
 }).then(client => {
   console.log('✅ WhatsApp client ready.');
 
