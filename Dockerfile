@@ -1,10 +1,8 @@
-# Use Node base image with bash and apt
 FROM node:18
 
-# Set working directory
 WORKDIR /app
 
-# Install system dependencies needed for Chromium
+# Install required system libraries
 RUN apt-get update && apt-get install -y \
     libglib2.0-0 \
     libnss3 \
@@ -21,18 +19,15 @@ RUN apt-get update && apt-get install -y \
     libxfixes3 \
     libx11-xcb1 \
     libxtst6 \
+    libdrm2 \            
     --no-install-recommends && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Copy package files and install deps
 COPY package*.json ./
 RUN npm install
 
-# Copy rest of the source code
 COPY . .
 
-# Expose default port (optional, in case future endpoints/log UI added)
 EXPOSE 3000
 
-# Run the app
 CMD ["npm", "start"]
