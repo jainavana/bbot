@@ -1,6 +1,9 @@
 // main.js
 import { create } from '@open-wa/wa-automate';
 import storage from './storage.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 function normalizeJid(jid) {
   return jid.split(':')[0];
@@ -162,11 +165,10 @@ function getCommands(userIsAdmin) {
 
 create({
   sessionId: 'bbbot',
-  useChrome: true,
   headless: true,
   qrTimeout: 60,
   authTimeout: 60,
-  cacheEnabled: false
+  cacheEnabled: false,
 }).then(client => {
   console.log('✅ WhatsApp client ready.');
 

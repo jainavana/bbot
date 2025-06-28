@@ -1,37 +1,40 @@
-FROM node:18-slim
+FROM node:20-slim
 
-# Install Chromium + deps + git
+# Install minimal deps for Puppeteer
 RUN apt-get update && apt-get install -y \
-    git \
-    chromium \
-    chromium-driver \
-    libglib2.0-0 \
+    wget \
+    ca-certificates \
+    fonts-liberation \
+    libasound2 \
+    libatk-bridge2.0-0 \
+    libatk1.0-0 \
+    libcups2 \
+    libdrm2 \
+    libgbm1 \
+    libgtk-3-0 \
+    libnspr4 \
     libnss3 \
     libx11-xcb1 \
     libxcomposite1 \
     libxdamage1 \
     libxrandr2 \
-    libgbm1 \
-    libxkbcommon0 \
-    libasound2 \
-    libatk-bridge2.0-0 \
-    libgtk-3-0 \
-    libdrm2 \
-    fonts-liberation \
+    libxshmfence1 \
     xdg-utils \
     --no-install-recommends && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ENV CHROME_PATH=/usr/bin/chromium
-
+# Create app directory
 WORKDIR /app
 
+# Install dependencies (this will install Puppeteer and download Chromium)
 COPY package*.json ./
+RUN npm install
 
-RUN npm install --verbose
-
+# Copy rest of the code
 COPY . .
 
+# Expose if needed
 EXPOSE 3000
 
+# Start app
 CMD ["node", "main.js"]

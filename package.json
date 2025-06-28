@@ -16,6 +16,7 @@
     "@hapi/boom": "^10.0.1",
     "@open-wa/wa-automate": "^4.76.0",
     "@whiskeysockets/baileys": "^6.7.18",
+    "dotenv": "^17.0.0",
     "lowdb": "^3.0.0",
     "luxon": "^3.6.1",
     "open": "^10.1.2",
