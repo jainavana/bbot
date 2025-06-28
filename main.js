@@ -164,7 +164,6 @@ create({
   sessionId: 'bbbot',
   multiDevice: true,
   headless: true,
-  useChrome: true,
   qrTimeout: 60,
   authTimeout: 60,
   cacheEnabled: false
