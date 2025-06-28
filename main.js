@@ -162,7 +162,6 @@ function getCommands(userIsAdmin) {
 
 create({
   sessionId: 'bbbot',
-  multiDevice: true,
   useChrome: true,
   headless: true,
   qrTimeout: 60,
