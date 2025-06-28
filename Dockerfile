@@ -1,9 +1,8 @@
 FROM node:20-slim
 
 # Install minimal deps for Puppeteer
-# Add git here
 RUN apt-get update && apt-get install -y \
-    git \ 
+    git \
     libglib2.0-0 \
     libnss3 \
     libx11-xcb1 \
@@ -24,14 +23,14 @@ RUN apt-get update && apt-get install -y \
 # Create app directory
 WORKDIR /app
 
-# Install dependencies (this will install Puppeteer and download Chromium)
+# Copy package.json and install dependencies
 COPY package*.json ./
 RUN npm install
 
-# Copy rest of the code
+# Copy the rest of the code (including session data)
 COPY . .
 
-# Expose if needed
+# Expose port if needed
 EXPOSE 3000
 
 # Start app

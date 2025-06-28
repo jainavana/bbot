@@ -165,10 +165,16 @@ function getCommands(userIsAdmin) {
 
 create({
   sessionId: 'bbbot',
-  headless: true,
-  qrTimeout: 60,
-  authTimeout: 60,
-  cacheEnabled: false,
+  useChrome: true,
+  headless: false,
+  deleteSessionDataOnLogout: true,
+  qrTimeout: 0,
+  authStrategy: 'legacy',
+  multiDevice: true,
+  linkCode: true,
+  disableSpins: true,
+  logConsole: true,
+  popup: false
 }).then(client => {
   console.log('✅ WhatsApp client ready.');
 
