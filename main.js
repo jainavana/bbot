@@ -176,6 +176,8 @@ create({
     const { body, sender, isGroupMsg, chatId, mentionedJidList } = message;
     if (!body.toLowerCase().startsWith('bb')) return;
 
+    console.log(`📩 Received command: ${body} from ${sender.id} in ${chatId}`);
+
     const [_, cmd, ...args] = body.trim().split(/\s+/);
     const reply = msg => client.sendText(chatId, msg);
     const senderId = sender.id;
