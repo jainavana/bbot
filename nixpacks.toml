@@ -1,0 +1,2 @@
+[phases.setup]
+nixPkgs = ['glib', 'nss', 'atk', 'pango', 'cairo', 'libx11', 'libxcomposite', 'libxdamage', 'libxext', 'libxfixes', 'libxrandr', 'libxrender', 'libxss', 'libxtst', 'cups', 'dbus-glib', 'expat', 'gtk3']
