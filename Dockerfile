@@ -1,7 +1,8 @@
 FROM node:18-slim
 
-# Install Chromium + deps
+# Install Chromium + deps + git
 RUN apt-get update && apt-get install -y \
+    git \
     chromium \
     chromium-driver \
     libglib2.0-0 \
@@ -19,27 +20,18 @@ RUN apt-get update && apt-get install -y \
     fonts-liberation \
     xdg-utils \
     --no-install-recommends && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Set CHROME_PATH to the installed binary
 ENV CHROME_PATH=/usr/bin/chromium
 
-# Create app directory
 WORKDIR /app
 
-# Copy package.json and install dependencies
 COPY package*.json ./
-RUN npm install
 
-# Copy the rest of your code
+RUN npm install --verbose
+
 COPY . .
 
-# Use Chrome with Puppeteer
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome
-
-# Expose port if needed (optional)
 EXPOSE 3000
 
-# Start your app
 CMD ["node", "main.js"]
