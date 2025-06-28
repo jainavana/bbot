@@ -19,7 +19,8 @@ RUN apt-get update && apt-get install -y \
     libxfixes3 \
     libx11-xcb1 \
     libxtst6 \
-    libdrm2 \            
+    libdrm2 \
+    libgbm1 \             
     --no-install-recommends && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
